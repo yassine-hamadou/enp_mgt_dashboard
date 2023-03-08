@@ -3,38 +3,37 @@ import {FC} from 'react'
 import {useIntl} from 'react-intl'
 import {PageTitle} from '../../../_metronic/layout/core'
 import {
-  MixedWidget2,
   MixedWidget10,
   MixedWidget11,
   ListsWidget2,
   ListsWidget3,
   ListsWidget4,
-  ListsWidget5,
   ListsWidget6,
   TablesWidget5,
   TablesWidget10,
   MixedWidget8,
 } from '../../../_metronic/partials/widgets'
+import PieChart from './PieChart'
+import {KTCard, KTCardBody} from '../../../_metronic/helpers'
+import {BarChart} from './BarChart'
 
 const DashboardPage: FC = () => (
   <>
     {/* begin::Row */}
     <div className='row gy-5 g-xl-8'>
       <div className='col-xxl-6'>
-        <MixedWidget2
-          className='card-xl-stretch mb-xl-8'
-          chartColor='danger'
-          chartHeight='200px'
-          strokeColor='#cb1e46'
-        />
+        <KTCard>
+          <KTCardBody>
+            <PieChart />
+          </KTCardBody>
+        </KTCard>
       </div>
       <div className='col-xxl-6'>
-        <MixedWidget10
-          className='card-xxl-stretch-50 mb-5 mb-xl-8'
-          chartColor='primary'
-          chartHeight='150px'
-        />
-        <ListsWidget5 className='card-xxl-stretch' />
+        <KTCard>
+          <KTCardBody>
+            <BarChart />
+          </KTCardBody>
+        </KTCard>
       </div>
       <div className='col-xxl-6'>
         <MixedWidget10
