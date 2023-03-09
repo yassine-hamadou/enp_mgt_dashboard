@@ -36,7 +36,7 @@ const MasterLayout = () => {
     <PageDataProvider>
       <ThemeModeProvider>
         <div className='page d-flex flex-row flex-column-fluid'>
-          <AsideDefault />
+          {/*<AsideDefault />*/}
           <div className='wrapper d-flex flex-column flex-row-fluid' id='kt_wrapper'>
             <HeaderWrapper />
 

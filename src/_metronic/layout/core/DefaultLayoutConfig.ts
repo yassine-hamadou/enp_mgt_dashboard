@@ -27,11 +27,11 @@ export const DefaultLayoutConfig: ILayout = {
     display: true, // Set true|false to show or hide Mega Menu
   },
   aside: {
-    display: true,
+    display: false,
     theme: 'dark',
     menu: 'main',
     fixed: true,
-    minimized: false,
+    minimized: true,
     minimize: true,
     hoverable: true,
     menuIcon: 'svg',

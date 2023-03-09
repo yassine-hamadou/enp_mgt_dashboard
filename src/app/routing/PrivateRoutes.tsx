@@ -1,24 +1,19 @@
 import {lazy, FC, Suspense} from 'react'
-import {Route, Routes, Navigate} from 'react-router-dom'
+import {Route, Routes, Navigate, Outlet} from 'react-router-dom'
 import {MasterLayout} from '../../_metronic/layout/MasterLayout'
 import TopBarProgress from 'react-topbar-progress-indicator'
 import {MenuTestPage} from '../pages/MenuTestPage'
 import {getCSSVariableValue} from '../../_metronic/assets/ts/_utils'
 import {WithChildren} from '../../_metronic/helpers'
 import BuilderPageWrapper from '../pages/layout-builder/BuilderPageWrapper'
-import {DashboardWrapper} from "../pages/dashboard/DashboardWrapper";
-
+import {DashboardWrapper} from '../pages/dashboard/DashboardWrapper'
+import {PageTitle} from '../../_metronic/layout/core'
 
 const PrivateRoutes = () => {
-  const ProfilePage = lazy(() => import('../modules/profile/ProfilePage'))
-  const WizardsPage = lazy(() => import('../modules/wizards/WizardsPage'))
-  const AccountPage = lazy(() => import('../modules/accounts/AccountPage'))
-  const WidgetsPage = lazy(() => import('../modules/widgets/WidgetsPage'))
-  const ChatPage = lazy(() => import('../modules/apps/chat/ChatPage'))
-  const UsersPage = lazy(() => import('../modules/apps/user-management/UsersPage'))
-const FinancePage = lazy(() => import('../pages/finance/FinancePage'))
-    const HRPage = lazy(() => import ('../pages/human-resource/HRPage'))
-    const ServiceManager = lazy(() => import('../pages/service-manager/ServiceManager'))
+  const FinancePage = lazy(() => import('../pages/finance/FinancePage'))
+  const HRPayroll = lazy(() => import('../pages/hr-payroll/HRPayroll'))
+  const ServiceManager = lazy(() => import('../pages/service-manager/ServiceManager'))
+  const Production = lazy(() => import('../pages/production/ProductionPage'))
 
   return (
     <Routes>
@@ -30,78 +25,98 @@ const FinancePage = lazy(() => import('../pages/finance/FinancePage'))
         <Route path='builder' element={<BuilderPageWrapper />} />
         <Route path='menu-test' element={<MenuTestPage />} />
         {/* Lazy Modules */}
+        <Route
+          path='finance/*'
+          element={
+            <SuspensedView>
+              <PageTitle breadcrumbs={[]}>{'Finance'}</PageTitle>
+              <FinancePage />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='hr-payroll/*'
+          element={
+            <SuspensedView>
+              <PageTitle breadcrumbs={[]}>{'HR-Payroll'}</PageTitle>
+              <HRPayroll />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='production/*'
+          element={
+            <SuspensedView>
+              <Outlet />
+            </SuspensedView>
+          }
+        >
           <Route
-            path='finance/*'
+            path=''
             element={
-                <SuspensedView>
-                    <FinancePage />
-                </SuspensedView>
+              <>
+                <PageTitle breadcrumbs={[]}>{'Production'}</PageTitle>
+                <Production />
+              </>
             }
           />
-          <Route
-            path='hr/*'
-            element={
-                <SuspensedView>
-                    <HRPage />
-                </SuspensedView>
-            }
-          />
-          <Route
-            path='svc-manager/*'
-            element={
-                <SuspensedView>
-                    <ServiceManager />
-                </SuspensedView>
-            }
-          />
+        </Route>
         <Route
-          path='crafted/pages/profile/*'
+          path='svc-manager/*'
           element={
             <SuspensedView>
-              <ProfilePage />
+              <ServiceManager />
             </SuspensedView>
           }
         />
-        <Route
-          path='crafted/pages/wizards/*'
-          element={
-            <SuspensedView>
-              <WizardsPage />
-            </SuspensedView>
-          }
-        />
-        <Route
-          path='crafted/widgets/*'
-          element={
-            <SuspensedView>
-              <WidgetsPage />
-            </SuspensedView>
-          }
-        />
-        <Route
-          path='crafted/account/*'
-          element={
-            <SuspensedView>
-              <AccountPage />
-            </SuspensedView>
-          }
-        />
-        <Route
-          path='apps/chat/*'
-          element={
-            <SuspensedView>
-              <ChatPage />
-            </SuspensedView>
-          }
-        />
-        <Route
-          path='apps/user-management/*'
-          element={
-            <SuspensedView>
-              <UsersPage />
-            </SuspensedView>
-          }
-        />
+        {/*<Route*/}
+        {/*  path='crafted/pages/profile/*'*/}
+        {/*  element={*/}
+        {/*    <SuspensedView>*/}
+        {/*      <ProfilePage />*/}
+        {/*    </SuspensedView>*/}
+        {/*  }*/}
+        {/*/>*/}
+        {/*<Route*/}
+        {/*  path='crafted/pages/wizards/*'*/}
+        {/*  element={*/}
+        {/*    <SuspensedView>*/}
+        {/*      <WizardsPage />*/}
+        {/*    </SuspensedView>*/}
+        {/*  }*/}
+        {/*/>*/}
+        {/*<Route*/}
+        {/*  path='crafted/widgets/*'*/}
+        {/*  element={*/}
+        {/*    <SuspensedView>*/}
+        {/*      <WidgetsPage />*/}
+        {/*    </SuspensedView>*/}
+        {/*  }*/}
+        {/*/>*/}
+        {/*<Route*/}
+        {/*  path='crafted/account/*'*/}
+        {/*  element={*/}
+        {/*    <SuspensedView>*/}
+        {/*      <AccountPage />*/}
+        {/*    </SuspensedView>*/}
+        {/*  }*/}
+        {/*/>*/}
+        {/*<Route*/}
+        {/*  path='apps/chat/*'*/}
+        {/*  element={*/}
+        {/*    <SuspensedView>*/}
+        {/*      <ChatPage />*/}
+        {/*    </SuspensedView>*/}
+        {/*  }*/}
+        {/*/>*/}
+        {/*<Route*/}
+        {/*  path='apps/user-management/*'*/}
+        {/*  element={*/}
+        {/*    <SuspensedView>*/}
+        {/*      <UsersPage />*/}
+        {/*    </SuspensedView>*/}
+        {/*  }*/}
+        {/*/>*/}
         {/* Page Not Found */}
         <Route path='*' element={<Navigate to='/error/404' />} />
       </Route>

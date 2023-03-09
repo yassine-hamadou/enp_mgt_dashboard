@@ -35,7 +35,7 @@ const DashboardPage: FC = () => (
           </KTCardBody>
         </KTCard>
       </div>
-      <div className='col-xxl-6'>
+      <div className='col-xxl-12'>
         <MixedWidget10
           className='card-xxl-stretch-50 mb-5 mb-xl-8'
           chartColor='primary'

@@ -6,10 +6,11 @@ export function MenuInner() {
   const intl = useIntl()
   return (
     <>
-      <MenuItem title={"General"} to='/dashboard' />
+      <MenuItem title={'General'} to='/dashboard' />
       <MenuItem title='Finance' to='/finance' />
-        <MenuItem title='Service-Manager' to='/svc-manager' />
-        <MenuItem title='Human Resource' to='/hr' /> 
+      <MenuItem title='Service-Manager' to='/svc-manager' />
+      <MenuItem title='Production' to='/production' />
+      <MenuItem title='HR-Payroll' to='/hr-payroll' />
 
       {/*<MenuInnerWithSub*/}
       {/*  title='Crafted'*/}

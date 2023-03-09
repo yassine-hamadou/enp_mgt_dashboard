@@ -53,6 +53,7 @@ const BarChart = () => {
       },
     },
   }
+  // @ts-ignore
   return <Bar {...config} />
 }
 
