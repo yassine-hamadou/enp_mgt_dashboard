@@ -8,6 +8,12 @@ import {WithChildren} from '../../_metronic/helpers'
 import BuilderPageWrapper from '../pages/layout-builder/BuilderPageWrapper'
 import {DashboardWrapper} from '../pages/dashboard/DashboardWrapper'
 import {PageTitle} from '../../_metronic/layout/core'
+import ProfilePage from '../modules/profile/ProfilePage'
+import WizardsPage from '../modules/wizards/WizardsPage'
+import WidgetsPage from '../modules/widgets/WidgetsPage'
+import AccountPage from '../modules/accounts/AccountPage'
+import ChatPage from '../modules/apps/chat/ChatPage'
+import UsersPage from '../modules/apps/user-management/UsersPage'
 
 const PrivateRoutes = () => {
   const FinancePage = lazy(() => import('../pages/finance/FinancePage'))
@@ -69,54 +75,54 @@ const PrivateRoutes = () => {
             </SuspensedView>
           }
         />
-        {/*<Route*/}
-        {/*  path='crafted/pages/profile/*'*/}
-        {/*  element={*/}
-        {/*    <SuspensedView>*/}
-        {/*      <ProfilePage />*/}
-        {/*    </SuspensedView>*/}
-        {/*  }*/}
-        {/*/>*/}
-        {/*<Route*/}
-        {/*  path='crafted/pages/wizards/*'*/}
-        {/*  element={*/}
-        {/*    <SuspensedView>*/}
-        {/*      <WizardsPage />*/}
-        {/*    </SuspensedView>*/}
-        {/*  }*/}
-        {/*/>*/}
-        {/*<Route*/}
-        {/*  path='crafted/widgets/*'*/}
-        {/*  element={*/}
-        {/*    <SuspensedView>*/}
-        {/*      <WidgetsPage />*/}
-        {/*    </SuspensedView>*/}
-        {/*  }*/}
-        {/*/>*/}
-        {/*<Route*/}
-        {/*  path='crafted/account/*'*/}
-        {/*  element={*/}
-        {/*    <SuspensedView>*/}
-        {/*      <AccountPage />*/}
-        {/*    </SuspensedView>*/}
-        {/*  }*/}
-        {/*/>*/}
-        {/*<Route*/}
-        {/*  path='apps/chat/*'*/}
-        {/*  element={*/}
-        {/*    <SuspensedView>*/}
-        {/*      <ChatPage />*/}
-        {/*    </SuspensedView>*/}
-        {/*  }*/}
-        {/*/>*/}
-        {/*<Route*/}
-        {/*  path='apps/user-management/*'*/}
-        {/*  element={*/}
-        {/*    <SuspensedView>*/}
-        {/*      <UsersPage />*/}
-        {/*    </SuspensedView>*/}
-        {/*  }*/}
-        {/*/>*/}
+        <Route
+          path='crafted/pages/profile/*'
+          element={
+            <SuspensedView>
+              <ProfilePage />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='crafted/pages/wizards/*'
+          element={
+            <SuspensedView>
+              <WizardsPage />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='crafted/widgets/*'
+          element={
+            <SuspensedView>
+              <WidgetsPage />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='crafted/account/*'
+          element={
+            <SuspensedView>
+              <AccountPage />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='apps/chat/*'
+          element={
+            <SuspensedView>
+              <ChatPage />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='apps/user-management/*'
+          element={
+            <SuspensedView>
+              <UsersPage />
+            </SuspensedView>
+          }
+        />
         {/* Page Not Found */}
         <Route path='*' element={<Navigate to='/error/404' />} />
       </Route>
