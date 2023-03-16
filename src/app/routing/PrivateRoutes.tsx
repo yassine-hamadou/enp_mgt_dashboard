@@ -14,12 +14,12 @@ import WidgetsPage from '../modules/widgets/WidgetsPage'
 import AccountPage from '../modules/accounts/AccountPage'
 import ChatPage from '../modules/apps/chat/ChatPage'
 import UsersPage from '../modules/apps/user-management/UsersPage'
+import {ProductionPage} from '../pages/production/ProductionPage'
+import {HRDashboardWrapper} from '../pages/hr-payroll/HumanResourceDashBoard'
 
 const PrivateRoutes = () => {
   const FinancePage = lazy(() => import('../pages/finance/FinancePage'))
-  const HRPayroll = lazy(() => import('../pages/hr-payroll/HRPayroll'))
   const ServiceManager = lazy(() => import('../pages/service-manager/ServiceManager'))
-  const Production = lazy(() => import('../pages/production/ProductionPage'))
 
   return (
     <Routes>
@@ -35,7 +35,7 @@ const PrivateRoutes = () => {
           path='finance/*'
           element={
             <SuspensedView>
-              <PageTitle breadcrumbs={[]}>{'Finance'}</PageTitle>
+              <PageTitle breadcrumbs={[]}>{'Finance Dashboard'}</PageTitle>
               <FinancePage />
             </SuspensedView>
           }
@@ -44,8 +44,7 @@ const PrivateRoutes = () => {
           path='hr-payroll/*'
           element={
             <SuspensedView>
-              <PageTitle breadcrumbs={[]}>{'HR-Payroll'}</PageTitle>
-              <HRPayroll />
+              <HRDashboardWrapper />
             </SuspensedView>
           }
         />
@@ -62,7 +61,7 @@ const PrivateRoutes = () => {
             element={
               <>
                 <PageTitle breadcrumbs={[]}>{'Production'}</PageTitle>
-                <Production />
+                <ProductionPage />
               </>
             }
           />
@@ -71,6 +70,7 @@ const PrivateRoutes = () => {
           path='svc-manager/*'
           element={
             <SuspensedView>
+              <PageTitle breadcrumbs={[]}>{'Service Manager Dashboard'}</PageTitle>
               <ServiceManager />
             </SuspensedView>
           }

@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, {useEffect, useRef} from 'react'
 import ApexCharts, {ApexOptions} from 'apexcharts'
-import {getCSSVariableValue} from '../../../assets/ts/_utils'
-import {useThemeMode} from '../../layout/theme-mode/ThemeModeProvider'
+import {getCSSVariableValue} from '../../../_metronic/assets/ts/_utils'
+import {useThemeMode} from '../../../_metronic/partials'
+// import {useThemeMode} from '../layout/theme-mode/ThemeModeProvider'
 
 type Props = {
   className: string
@@ -10,7 +11,7 @@ type Props = {
   chartHeight: string
 }
 
-const MixedWidget11: React.FC<Props> = ({className, chartColor, chartHeight}) => {
+const HRChart: React.FC<Props> = ({className, chartColor, chartHeight}) => {
   const chartRef = useRef<HTMLDivElement | null>(null)
   const {mode} = useThemeMode()
   const refreshChart = () => {
@@ -39,23 +40,8 @@ const MixedWidget11: React.FC<Props> = ({className, chartColor, chartHeight}) =>
 
   return (
     <div className={`card ${className}`}>
-      {/* begin::Body */}
       <div className='card-body p-0 d-flex justify-content-between flex-column overflow-hidden'>
-        {/* begin::Hidden */}
-        <div className='d-flex flex-stack flex-wrap flex-grow-1 px-9 pt-9 pb-3'>
-          <div className='me-2'>
-            <span className='fw-bold text-gray-800 d-block fs-3'>Production</span>
-
-            <span className='text-gray-400 fw-semibold'>Oct 8 - Oct 26 2021</span>
-          </div>
-
-          <div className={`fw-bold fs-3 text-${chartColor}`}>153 Hrs</div>
-        </div>
-        {/* end::Hidden */}
-
-        {/* begin::Chart */}
         <div ref={chartRef} className='mixed-widget-10-chart'></div>
-        {/* end::Chart */}
       </div>
     </div>
   )
@@ -65,23 +51,24 @@ const chartOptions = (chartColor: string, chartHeight: string): ApexOptions => {
   const labelColor = getCSSVariableValue('--kt-gray-500')
   const borderColor = getCSSVariableValue('--kt-gray-200')
   const secondaryColor = getCSSVariableValue('--kt-gray-300')
-  const baseColor = getCSSVariableValue('--kt-' + chartColor)
+  const baseColor = getCSSVariableValue('--kt-' + '#125B50')
 
   return {
     series: [
       {
-        name: 'Total Production',
-        data: [50, 60, 70, 80, 60, 50, 70, 60],
+        name: 'MALE',
+        data: [53, 24, 130, 78, 289, 262, 836],
       },
       {
-        name: 'Hours',
-        data: [50, 60, 70, 80, 60, 50, 70, 60],
+        name: 'FEMALE',
+        data: [45, 21, 51, 101, 201, 190, 508],
       },
     ],
     chart: {
       fontFamily: 'inherit',
       type: 'bar',
-      height: chartHeight,
+      height: 450,
+      stacked: true,
       toolbar: {
         show: false,
       },
@@ -94,7 +81,8 @@ const chartOptions = (chartColor: string, chartHeight: string): ApexOptions => {
       },
     },
     legend: {
-      show: false,
+      position: 'top',
+      offsetY: 20,
     },
     dataLabels: {
       enabled: false,
@@ -105,7 +93,15 @@ const chartOptions = (chartColor: string, chartHeight: string): ApexOptions => {
       colors: ['transparent'],
     },
     xaxis: {
-      categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+      categories: [
+        'CORPORATE',
+        'FINANCE',
+        'HUMAN RESOURCE',
+        'MAINTENANCE',
+        'PRODUCTION',
+        'TRANSPORT',
+        'TOTAL',
+      ],
       axisBorder: {
         show: false,
       },
@@ -118,6 +114,9 @@ const chartOptions = (chartColor: string, chartHeight: string): ApexOptions => {
           fontSize: '12px',
         },
       },
+      title: {
+        text: 'Employee By Department',
+      },
     },
     yaxis: {
       labels: {
@@ -127,6 +126,7 @@ const chartOptions = (chartColor: string, chartHeight: string): ApexOptions => {
         },
       },
     },
+
     fill: {
       type: 'solid',
     },
@@ -151,17 +151,18 @@ const chartOptions = (chartColor: string, chartHeight: string): ApexOptions => {
         },
       },
     },
+
     tooltip: {
       style: {
         fontSize: '12px',
       },
       y: {
         formatter: function (val) {
-          return '$' + val + ' revenue'
+          return val + ''
         },
       },
     },
-    colors: [baseColor, secondaryColor],
+    colors: ['#445C3C', '#FDA77F', '#C9D99E'],
     grid: {
       padding: {
         top: 10,
@@ -177,4 +178,4 @@ const chartOptions = (chartColor: string, chartHeight: string): ApexOptions => {
   }
 }
 
-export {MixedWidget11}
+export {HRChart}

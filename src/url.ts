@@ -5,6 +5,8 @@ import axios from 'axios'
 // export const ENP_URL = 'http://localhost:3001'
 // export const ENP_URL = 'https://cors-anywhere.herokuapp.com/http://208.117.44.15/SmWebApi/api'
 export const ENP_URL = 'http://208.117.44.15/SmWebApi/api'
+export const ENP_HR = 'http://208.117.44.15/hrWebApi/api'
+
 // export const ENP_URL = 'http://localhost:4192'
 
 export const fetchEquips = () => {
@@ -48,4 +50,8 @@ export const fetchItems = () => {
 }
 export const fetchItemValue = () => {
   return axios.get(`${ENP_URL}/ItemValue`)
+}
+
+export const fetchDashBoardData = () => {
+  return axios.get(`${ENP_HR}/SortedData`)
 }
