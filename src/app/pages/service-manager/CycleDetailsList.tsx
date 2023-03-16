@@ -1,9 +1,9 @@
 import {Button, Input, Space, Table} from 'antd'
 import {useEffect, useState} from 'react'
 import axios from 'axios'
-import {KTCard, KTCardBody, KTSVG} from '../../../../_metronic/helpers'
-import {ENP_URL} from '../../../urls'
 import {useQuery} from 'react-query'
+import {ENP_URL} from '../../../url'
+import {KTCard, KTCardBody, KTSVG} from '../../../_metronic/helpers'
 
 const DashboardTable = () => {
   const [gridData, setGridData] = useState([])
