@@ -16,6 +16,7 @@ import ChatPage from '../modules/apps/chat/ChatPage'
 import UsersPage from '../modules/apps/user-management/UsersPage'
 import {ProductionPage} from '../pages/production/ProductionPage'
 import {HRDashboardWrapper} from '../pages/hr-payroll/HumanResourceDashBoard'
+import {PayrollDashboardWrapper} from '../pages/hr-payroll/PayrollDashBoard'
 
 const PrivateRoutes = () => {
   const FinancePage = lazy(() => import('../pages/finance/FinancePage'))
@@ -41,10 +42,18 @@ const PrivateRoutes = () => {
           }
         />
         <Route
-          path='hr-payroll/*'
+          path='hr/*'
           element={
             <SuspensedView>
               <HRDashboardWrapper />
+            </SuspensedView>
+          }
+        />
+        <Route
+          path='payroll/*'
+          element={
+            <SuspensedView>
+              <PayrollDashboardWrapper />
             </SuspensedView>
           }
         />
@@ -71,7 +80,7 @@ const PrivateRoutes = () => {
           element={
             <SuspensedView>
               <PageTitle breadcrumbs={[]}>{'Service Manager Dashboard'}</PageTitle>
-              <ServiceManager />
+              <DashboardWrapper />
             </SuspensedView>
           }
         />

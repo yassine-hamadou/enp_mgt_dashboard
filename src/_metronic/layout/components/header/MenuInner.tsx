@@ -8,9 +8,10 @@ export function MenuInner() {
     <>
       <MenuItem title={'General'} to='/dashboard' />
       <MenuItem title='Finance' to='/finance' />
-      <MenuItem title='Service-Manager' to='/svc-manager' />
+      <MenuItem title='ESMS' to='/svc-manager' />
       <MenuItem title='Production' to='/production' />
-      <MenuItem title='HR-Payroll' to='/hr-payroll' />
+      <MenuItem title='HR' to='/hr' />
+      <MenuItem title={'PAYROLL'} to={'/payroll'} />
 
       {/*<MenuInnerWithSub*/}
       {/*  title='Crafted'*/}

@@ -113,9 +113,9 @@ const HRDashboardPage = () => {
         <div className='col-xxl-6'>
           <TestChart className='mb-xl-8' chartColor='primary' chartHeight='350px' />
         </div>
-        <div className='col-12'>
-          <PayrollDashboardWrapper />
-        </div>
+        {/*<div className='col-12'>*/}
+        {/*  <PayrollDashboardWrapper />*/}
+        {/*</div>*/}
         <div
           className='col-12 row mt-7'
           style={{

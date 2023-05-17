@@ -16,12 +16,12 @@ const loginSchema = Yup.object().shape({
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
     .required('Password is required'),
-  option: Yup.string().required('Company is required'),
+  // option: Yup.string().required('Company is required'),
 })
 
 const initialValues = {
-  email: 'User ID',
-  password: 'demo',
+  email: '',
+  password: '',
 }
 
 /*
@@ -144,29 +144,29 @@ export function Login() {
           </div>
         )}
       </div>
-      <div className='fv-row mb-10'>
-        <div className='mb-10'>
-          <label className='form-label fw-bold'>Company:</label>
-          <div>
-            <select
-              className='form-select form-select-solid'
-              data-kt-select2='true'
-              data-placeholder='Select option'
-              data-allow-clear='true'
-              defaultValue={''}
-              {...formik.getFieldProps('option')}
-            >
-              <option></option>
-              <option value='damangDivision'>Engineers and Planners - DAMANG DIVISION</option>
-              <option value='dzataDivision'>Engineers and Planners - DZATA DIVISION</option>
-              <option value='mpohorDivision'>Engineers and Planners - MPOHOR DIVISION</option>
-              <option value='headOffice'>Engineers and Planners - HEAD OFFICE</option>
-              <option value='salagaDivision'>Engineers and Planners - SALAGA DIVISION</option>
-              <option value='tarkwaDivision'>Engineers and Planners - TARKWA DIVISION</option>
-            </select>
-          </div>
-        </div>
-      </div>
+      {/*<div className='fv-row mb-10'>*/}
+      {/*  <div className='mb-10'>*/}
+      {/*    <label className='form-label fw-bold'>Company:</label>*/}
+      {/*    <div>*/}
+      {/*      <select*/}
+      {/*        className='form-select form-select-solid'*/}
+      {/*        data-kt-select2='true'*/}
+      {/*        data-placeholder='Select option'*/}
+      {/*        data-allow-clear='true'*/}
+      {/*        defaultValue={''}*/}
+      {/*        {...formik.getFieldProps('option')}*/}
+      {/*      >*/}
+      {/*        <option></option>*/}
+      {/*        <option value='damangDivision'>Engineers and Planners - DAMANG DIVISION</option>*/}
+      {/*        <option value='dzataDivision'>Engineers and Planners - DZATA DIVISION</option>*/}
+      {/*        <option value='mpohorDivision'>Engineers and Planners - MPOHOR DIVISION</option>*/}
+      {/*        <option value='headOffice'>Engineers and Planners - HEAD OFFICE</option>*/}
+      {/*        <option value='salagaDivision'>Engineers and Planners - SALAGA DIVISION</option>*/}
+      {/*        <option value='tarkwaDivision'>Engineers and Planners - TARKWA DIVISION</option>*/}
+      {/*      </select>*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*</div>*/}
 
       {/* end::Form group */}
 

@@ -12,46 +12,32 @@ type Props = {
   chartHeight: string
 }
 
-const BarChart: React.FC<Props> = ({className, chartColor, chartHeight}) => {
+const BarChart2: React.FC<Props> = ({className, chartColor, chartHeight}) => {
   const chartRef = useRef<HTMLDivElement | null>(null)
   const {mode} = useThemeMode()
-  const data: any = []
-  const categories: any = []
-  const monthArray = [
-    'Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec',
-  ]
-  const tenant = 'tarkwa'
-  const {data: listOfFaults} = useQuery('listOfFaults', () => {
-    return axios.get(`${ENP_URL}/faultentriesapi/tenant/${tenant}`)
-  })
-  // const [categories, setCategories]: any = useState([])
-  // const [data, setData]: any = useState([])
 
-  console.log('data', data)
-  console.log('categories', categories)
-  console.log('slice', data.slice(-12))
+  const {data: listOfFaults} = useQuery('listOfFaults', () => {
+    return axios.get(`${ENP_URL}/faultentriesapi`)
+  })
+
+  const {data: listOfDownTypes} = useQuery('listOfDownTypes', () => {
+    return axios.get(`${ENP_URL}/vmfaltsapi`)
+  })
+  const category: any = []
+  const faults: any = []
   const chartOptions = (chartColor: string, chartHeight: string): ApexOptions => {
     const labelColor = getCSSVariableValue('--kt-gray-500')
     const borderColor = getCSSVariableValue('--kt-gray-200')
     const secondaryColor = getCSSVariableValue('--kt-gray-300')
     const baseColor = getCSSVariableValue('--kt-' + chartColor)
 
+    console.log('listOfDownTypes', faults)
+    console.log('listOfDownTypes', category)
     return {
       series: [
         {
           name: 'Total',
-          data: data?.slice(-12),
+          data: faults ? faults : [],
         },
       ],
       chart: {
@@ -81,7 +67,7 @@ const BarChart: React.FC<Props> = ({className, chartColor, chartHeight}) => {
         colors: ['transparent'],
       },
       xaxis: {
-        categories: categories?.slice(-12),
+        categories: category ? category : [],
         axisBorder: {
           show: false,
         },
@@ -164,26 +150,24 @@ const BarChart: React.FC<Props> = ({className, chartColor, chartHeight}) => {
     return chart
   }
 
-  //from now to last 12 months
-  for (let i = 0; i < 12; i++) {
-    const date = new Date()
-    date.setMonth(date.getMonth() - i)
-    const year = date.getFullYear()
-    const month = date.getMonth() + 1
-    const monthString = month < 10 ? `0${month}` : month
-    const dateString = `${year}-${monthString}`
-    // setCategories([...categories, monthArray[new Date(dateString).getMonth()]])
-    categories.push(monthArray[new Date(dateString).getMonth()])
-    const faultDuringTheMonth = listOfFaults?.data.filter((item: any) => {
-      if (item.status === 1 && item.downtime?.includes(dateString)) {
-        return item
-      }
-    })
-    const TDowntimeMillisecond = faultDuringTheMonth
-      ?.map((item: any) => new Date(item.wtimeEnd).getTime() - new Date(item.downtime).getTime())
-      .reduce((a: any, b: any) => a + b, 0)
-    data.push(Math.floor(TDowntimeMillisecond / 1000 / 60 / 60))
-  }
+  listOfDownTypes?.data?.map((item: any) => {
+    const resolvedFaultsByDownType: any = listOfFaults?.data?.filter(
+      (fault: any) => fault.downType.trim() === item.faultDesc.trim() && fault.status === 1
+    )
+
+    const downTimePerDownTypeHours =
+      resolvedFaultsByDownType
+        ?.map((fault: any) => {
+          return new Date(fault.wtimeEnd).getTime() - new Date(fault.downtime).getTime()
+        })
+        ?.reduce((a: any, b: any) => a + b, 0) /
+      1000 /
+      60 /
+      60
+
+    category.push(item.faultDesc)
+    faults.push(Math.floor(downTimePerDownTypeHours))
+  })
   useEffect(() => {
     const chart = refreshChart()
 
@@ -193,7 +177,7 @@ const BarChart: React.FC<Props> = ({className, chartColor, chartHeight}) => {
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chartRef, mode, categories, data])
+  }, [chartRef, mode, faults, category])
   const todayDate = new Date()
   const lastDate = new Date()
   lastDate.setMonth(todayDate.getMonth() - 11)
@@ -205,17 +189,10 @@ const BarChart: React.FC<Props> = ({className, chartColor, chartHeight}) => {
         {/* begin::Hidden */}
         <div className='d-flex flex-stack flex-wrap flex-grow-1 px-9 pt-9 pb-3'>
           <div className='me-2'>
-            <span className='fw-bold text-gray-800 d-block fs-3'>Monthly Downtime</span>
+            <span className='fw-bold text-gray-800 d-block fs-3'>Downtime By Fault Type</span>
 
-            <span className='text-gray-400 fw-semibold'>
-              <strong>
-                {monthArray[todayDate.getMonth()]} {todayDate.getFullYear()}
-              </strong>{' '}
-              back to{' '}
-              <strong>
-                {monthArray[lastDate.getMonth()]} {lastDate.getFullYear()}
-              </strong>
-            </span>
+            {/*<span*/}
+            {/*  className='text-gray-400 fw-semibold'><strong>{monthArray[todayDate.getMonth()]} {todayDate.getFullYear()}</strong> back to <strong>{monthArray[lastDate.getMonth()]} {lastDate.getFullYear()}</strong></span>*/}
           </div>
 
           <div className={`fw-bold fs-3 text-${chartColor}`}>{}</div>
@@ -230,4 +207,4 @@ const BarChart: React.FC<Props> = ({className, chartColor, chartHeight}) => {
   )
 }
 
-export {BarChart}
+export {BarChart2}
