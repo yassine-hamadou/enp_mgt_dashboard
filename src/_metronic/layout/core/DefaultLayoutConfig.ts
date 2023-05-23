@@ -37,7 +37,7 @@ export const DefaultLayoutConfig: ILayout = {
     menuIcon: 'svg',
   },
   content: {
-    width: 'fixed', // Set fixed|fluid to change width
+    width: 'fluid', // Set fixed|fluid to change width
     layout: 'default',
   },
   toolbar: {

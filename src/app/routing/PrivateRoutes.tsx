@@ -6,7 +6,8 @@ import {MenuTestPage} from '../pages/MenuTestPage'
 import {getCSSVariableValue} from '../../_metronic/assets/ts/_utils'
 import {WithChildren} from '../../_metronic/helpers'
 import BuilderPageWrapper from '../pages/layout-builder/BuilderPageWrapper'
-import {DashboardWrapper} from '../pages/dashboard/DashboardWrapper'
+import {ServiceManager} from '../pages/dashboard/DashboardWrapper'
+import {ProductionDashboardWrapper} from '../pages/production/dashboard/ServiceManagerDashboardWrapper'
 import {PageTitle} from '../../_metronic/layout/core'
 import ProfilePage from '../modules/profile/ProfilePage'
 import WizardsPage from '../modules/wizards/WizardsPage'
@@ -14,13 +15,13 @@ import WidgetsPage from '../modules/widgets/WidgetsPage'
 import AccountPage from '../modules/accounts/AccountPage'
 import ChatPage from '../modules/apps/chat/ChatPage'
 import UsersPage from '../modules/apps/user-management/UsersPage'
-import {ProductionPage} from '../pages/production/ProductionPage'
 import {HRDashboardWrapper} from '../pages/hr-payroll/HumanResourceDashBoard'
 import {PayrollDashboardWrapper} from '../pages/hr-payroll/PayrollDashBoard'
+import {Soon} from '../modules/errors/components/Error404'
+import MainDashboard from '../pages/dashboard/mainDashboard/BarChart'
 
 const PrivateRoutes = () => {
   const FinancePage = lazy(() => import('../pages/finance/FinancePage'))
-  const ServiceManager = lazy(() => import('../pages/service-manager/ServiceManager'))
 
   return (
     <Routes>
@@ -28,7 +29,15 @@ const PrivateRoutes = () => {
         {/* Redirect to Dashboard after success login/registartion */}
         <Route path='auth/*' element={<Navigate to='/dashboard' />} />
         {/* Pages */}
-        <Route path='dashboard' element={<DashboardWrapper />} />
+        <Route
+          path='dashboard'
+          element={
+            <>
+              <PageTitle>{'Activity'}</PageTitle>
+              <MainDashboard />
+            </>
+          }
+        />
         <Route path='builder' element={<BuilderPageWrapper />} />
         <Route path='menu-test' element={<MenuTestPage />} />
         {/* Lazy Modules */}
@@ -58,6 +67,14 @@ const PrivateRoutes = () => {
           }
         />
         <Route
+          path='supply-chain/*'
+          element={
+            <SuspensedView>
+              <Soon />
+            </SuspensedView>
+          }
+        />
+        <Route
           path='production/*'
           element={
             <SuspensedView>
@@ -70,7 +87,7 @@ const PrivateRoutes = () => {
             element={
               <>
                 <PageTitle breadcrumbs={[]}>{'Production'}</PageTitle>
-                <ProductionPage />
+                <ProductionDashboardWrapper />
               </>
             }
           />
@@ -80,7 +97,7 @@ const PrivateRoutes = () => {
           element={
             <SuspensedView>
               <PageTitle breadcrumbs={[]}>{'Service Manager Dashboard'}</PageTitle>
-              <DashboardWrapper />
+              <ServiceManager />
             </SuspensedView>
           }
         />

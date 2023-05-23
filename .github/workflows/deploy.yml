@@ -1,0 +1,54 @@
+name: Run Github-hosted runner for build and self-hosted runner deployment to IIS
+# Author: Yassine Hamadou Mounkaila
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch: # Allows you to run this workflow manually from the Actions tab
+
+jobs:
+  build-and-deploy:
+    runs-on: windows-latest
+
+    strategy:
+      matrix:
+        node-version: [ 18.x ]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build the project
+        run: npm run ciBuild
+
+      # upload artifact
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: build
+
+
+  deploy:
+    runs-on: self-hosted
+    needs: build-and-deploy
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: build
+          path: build
+
+      - name: Copy build folder to the website folder
+        run: xcopy /Y /S /I build\* C:\inetpub\wwwroot\dashboards\

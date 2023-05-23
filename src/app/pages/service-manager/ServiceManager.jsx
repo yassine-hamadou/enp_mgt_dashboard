@@ -1,7 +1,7 @@
-import {MixedWidget11, MixedWidget8, TablesWidget5} from '../../../_metronic/partials/widgets'
+import {MixedWidget11} from '../../../_metronic/partials/widgets'
 import {BarChart} from './BarChart'
 import {DashboardTable} from './CycleDetailsList'
-
+import DashboardControl from 'devexpress-dashboard-react'
 function serviceManager() {
   return (
     <>
@@ -28,6 +28,12 @@ function serviceManager() {
           {/*card-xxl-stretch mb-5 mb-xl-8*/}
           <DashboardTable />
         </div>
+      </div>
+      <div style={{position: 'absolute', top: '0px', left: '0px', right: '0px', bottom: '0px'}}>
+        <DashboardControl
+          style={{height: '100%'}}
+          endpoint='http://208.117.44.15/dashboards/api/dashboard'
+        ></DashboardControl>
       </div>
     </>
   )

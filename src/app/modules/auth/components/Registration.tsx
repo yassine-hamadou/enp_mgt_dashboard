@@ -62,7 +62,7 @@ export function Registration() {
           values.changepassword
         )
         saveAuth(auth)
-        const {data: user} = await getUserByToken(auth.api_token)
+        const {data: user} = await getUserByToken(auth.jwtToken)
         setCurrentUser(user)
       } catch (error) {
         console.error(error)

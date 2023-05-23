@@ -3,11 +3,11 @@ import {MenuItem} from './MenuItem'
 import {useIntl} from 'react-intl'
 
 export function MenuInner() {
-  const intl = useIntl()
   return (
     <>
       <MenuItem title={'General'} to='/dashboard' />
       <MenuItem title='Finance' to='/finance' />
+      <MenuItem title={'Supply Chain'} to={'/supply-chain'} />
       <MenuItem title='ESMS' to='/svc-manager' />
       <MenuItem title='Production' to='/production' />
       <MenuItem title='HR' to='/hr' />

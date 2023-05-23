@@ -8,10 +8,9 @@ import {useAuth} from '../core/Auth'
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
-    .email('Wrong ID')
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
-    .required('ID is required'),
+    .required('Username is required'),
   password: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
@@ -42,10 +41,11 @@ export function Login() {
       try {
         const {data: auth} = await login(values.email, values.password)
         saveAuth(auth)
-        const {data: user} = await getUserByToken(auth.api_token)
+        const user: any = await getUserByToken(auth.jwtToken)
         setCurrentUser(user)
       } catch (error) {
         console.error(error)
+        console.log('error', error)
         saveAuth(undefined)
         setStatus('The login detail is incorrect')
         setSubmitting(false)

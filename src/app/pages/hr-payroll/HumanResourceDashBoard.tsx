@@ -4,7 +4,6 @@ import {Table} from 'antd'
 import {HRChart} from './HRChart'
 import {fetchDashBoardData} from '../../../url'
 import {TestChart} from './TestChart'
-import {PayrollDashboardWrapper} from './PayrollDashBoard'
 
 const columns: any = [
   {
@@ -147,7 +146,6 @@ const HRDashboardPage = () => {
 }
 
 const HRDashboardWrapper = () => {
-  // const intl = useIntl()
   return (
     <>
       <PageTitle breadcrumbs={[]}>{'HR-Payroll Dashboard'}</PageTitle>
