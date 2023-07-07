@@ -12,3 +12,9 @@
 // Layout
 @import "./core/layout/base";
 @import "layout/layout";
+
+@import url('devextreme/dist/css/dx.light.css');
+@import url('@devexpress/analytics-core/dist/css/dx-analytics.common.css');
+@import url('@devexpress/analytics-core/dist/css/dx-analytics.light.css');
+@import url('@devexpress/analytics-core/dist/css/dx-querybuilder.css');
+@import url('devexpress-dashboard/dist/css/dx-dashboard.light.css');

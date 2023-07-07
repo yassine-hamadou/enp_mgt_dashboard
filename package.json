@@ -12,6 +12,7 @@
     "@popperjs/core": "2.11.5",
     "@syncfusion/ej2-react-charts": "^20.4.52",
     "@syncfusion/ej2-react-layouts": "^20.4.48",
+    "activity": "^0.1.1",
     "animate.css": "4.1.1",
     "antd": "^5.3.1",
     "apexcharts": "3.35.0",

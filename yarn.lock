@@ -2954,6 +2954,13 @@ acorn@^8.2.4, acorn@^8.4.1, acorn@^8.5.0, acorn@^8.7.0:
   resolved "https://registry.npmjs.org/acorn/-/acorn-8.7.0.tgz"
   integrity sha512-V/LGr1APy+PXIwKebEWrkZPwoeoF+w1jiOBUmuxuiUIaOHtob8Qc9BTrYo7VuI5fR8tqsy+buA2WFooR5olqvQ==
 
+activity@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/activity/-/activity-0.1.1.tgz#59f4a18a31be820254ebec97854155630d27e4c8"
+  integrity sha512-qwp7OVFEeG1I+wzYet3BjIhylz9ebTwwfJ/UWMmJIy81FdksuzX5eVppJF/YyvjckSaKN8WL2xyeLjXkUXGtbw==
+  dependencies:
+    underscore "1.4.x"
+
 address@^1.0.1, address@^1.1.2:
   version "1.1.2"
   resolved "https://registry.npmjs.org/address/-/address-1.1.2.tgz"
@@ -10754,6 +10761,11 @@ uncontrollable@^7.2.1:
     "@types/react" ">=16.9.11"
     invariant "^2.2.4"
     react-lifecycles-compat "^3.0.4"
+
+underscore@1.4.x:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.4.4.tgz#61a6a32010622afa07963bf325203cf12239d604"
+  integrity sha512-ZqGrAgaqqZM7LGRzNjLnw5elevWb5M8LEoDMadxIW3OWbcv72wMMgKdwOKpd5Fqxe8choLD8HN3iSj3TUh/giQ==
 
 unicode-canonical-property-names-ecmascript@^2.0.0:
   version "2.0.0"

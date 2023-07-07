@@ -3,6 +3,7 @@ import {FC} from 'react'
 import {useIntl} from 'react-intl'
 import {PageTitle} from '../../../_metronic/layout/core'
 import {MixedWidget10, MixedWidget11, ListsWidget5} from '../../../_metronic/partials/widgets'
+import Devexpres from '../dashboard/Devexpres'
 import {MixedWidget2} from './MixedWidget2'
 
 const DashboardPage: FC = () => (
@@ -42,7 +43,14 @@ const ProductionPage: FC = () => {
   return (
     <>
       <PageTitle breadcrumbs={[]}>Production Dashboard</PageTitle>
-      <DashboardPage />
+      <div className='col-xl-12 mb-7  border border-gray-400'>
+        <Devexpres dashboardId={'pro_cycleDetails'} />
+      </div>
+      <div className='col-xl-12 border border-gray-400'>
+        <Devexpres dashboardId={'pro_fuelIntake'} />
+      </div>
+      <br />
+      <br />
     </>
   )
 }

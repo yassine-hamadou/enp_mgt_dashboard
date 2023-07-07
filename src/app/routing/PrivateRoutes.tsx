@@ -16,9 +16,9 @@ import AccountPage from '../modules/accounts/AccountPage'
 import ChatPage from '../modules/apps/chat/ChatPage'
 import UsersPage from '../modules/apps/user-management/UsersPage'
 import {HRDashboardWrapper} from '../pages/hr-payroll/HumanResourceDashBoard'
-import {PayrollDashboardWrapper} from '../pages/hr-payroll/PayrollDashBoard'
 import {Soon} from '../modules/errors/components/Error404'
 import MainDashboard from '../pages/dashboard/mainDashboard/BarChart'
+import {SupplyChain} from '../pages/supplyChain/SupplyChain'
 
 const PrivateRoutes = () => {
   const FinancePage = lazy(() => import('../pages/finance/FinancePage'))
@@ -62,7 +62,7 @@ const PrivateRoutes = () => {
           path='payroll/*'
           element={
             <SuspensedView>
-              <PayrollDashboardWrapper />
+              <Soon />
             </SuspensedView>
           }
         />
@@ -70,7 +70,7 @@ const PrivateRoutes = () => {
           path='supply-chain/*'
           element={
             <SuspensedView>
-              <Soon />
+              <SupplyChain />
             </SuspensedView>
           }
         />

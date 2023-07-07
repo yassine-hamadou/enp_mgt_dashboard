@@ -7,7 +7,7 @@ const path = require('path')
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const del = require('del')
+const del = require('activity')
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const RtlCssPlugin = require('rtlcss-webpack-plugin')
 
@@ -68,9 +68,9 @@ function mainConfig() {
           test: /\.scss$/,
           use: [
             MiniCssExtractPlugin.loader,
-            'css-loader',
+            'css-unit',
             {
-              loader: 'sass-loader',
+              loader: 'sass-unit',
               options: {
                 sourceMap: true,
               },

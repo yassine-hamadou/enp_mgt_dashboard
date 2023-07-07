@@ -3,10 +3,15 @@ import axios from 'axios'
  Use this file to define your base URLs whether on localhost or on the ENP server
  */
 // export const ENP_URL = 'http://localhost:3001'
-// export const ENP_URL = 'https://cors-anywhere.herokuapp.com/http://208.117.44.15/SmWebApi/api'
-export const ENP_URL = 'http://208.117.44.15/SmWebApi/api'
-export const ENP_HR = 'http://208.117.44.15/hrWebApi/api'
-export const ENP_USERS = 'http://208.117.44.15/hrwebapi/api/Users'
+// export const ENP_URL = 'https://cors-anywhere.herokuapp.com/https://app.sipconsult.net/SmWebApi/api'
+// https://app.sipconsult.net/
+// export const ENP_URL = 'https://app.sipconsult.net/SmWebApi/api'
+// export const ENP_HR = 'https://app.sipconsult.net/hrWebApi/api'
+// export const ENP_USERS = 'https://app.sipconsult.net/hrwebapi/api/Users'
+
+export const ENP_URL = 'http://208.117.44.15:8080/SmWebApi/api'
+export const ENP_HR = 'http://208.117.44.15:8080/hrWebApi/api'
+export const ENP_USERS = 'http://208.117.44.15:8080/hrwebapi/api/Users'
 
 // export const ENP_URL = 'http://localhost:4192'
 
