@@ -7,11 +7,7 @@ import Devexpres from './Devexpres'
 const DashboardPage = () => (
   <>
     {/* begin::Row */}
-    <div className='row gy-5 g-xl-8'>
-      <div className='col-xl-12'>
-        <Devexpres dashboardId={'dashboard3'} />
-      </div>
-    </div>
+    <Devexpres dashboardId={'dashboard3'} />
     <br />
     <br />
     <div className='row gy-5 g-xl-8'>

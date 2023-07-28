@@ -9,16 +9,11 @@ import BuilderPageWrapper from '../pages/layout-builder/BuilderPageWrapper'
 import {ServiceManager} from '../pages/dashboard/DashboardWrapper'
 import {ProductionDashboardWrapper} from '../pages/production/dashboard/ServiceManagerDashboardWrapper'
 import {PageTitle} from '../../_metronic/layout/core'
-import ProfilePage from '../modules/profile/ProfilePage'
-import WizardsPage from '../modules/wizards/WizardsPage'
-import WidgetsPage from '../modules/widgets/WidgetsPage'
-import AccountPage from '../modules/accounts/AccountPage'
-import ChatPage from '../modules/apps/chat/ChatPage'
-import UsersPage from '../modules/apps/user-management/UsersPage'
 import {HRDashboardWrapper} from '../pages/hr-payroll/HumanResourceDashBoard'
 import {Soon} from '../modules/errors/components/Error404'
 import MainDashboard from '../pages/dashboard/mainDashboard/BarChart'
 import {SupplyChain} from '../pages/supplyChain/SupplyChain'
+import Devexpres from '../pages/dashboard/Devexpres'
 
 const PrivateRoutes = () => {
   const FinancePage = lazy(() => import('../pages/finance/FinancePage'))
@@ -34,7 +29,7 @@ const PrivateRoutes = () => {
           element={
             <>
               <PageTitle>{'Activity'}</PageTitle>
-              <MainDashboard />
+              <Devexpres dashboardId={'Activity'} />
             </>
           }
         />
@@ -98,54 +93,6 @@ const PrivateRoutes = () => {
             <SuspensedView>
               <PageTitle breadcrumbs={[]}>{'Service Manager Dashboard'}</PageTitle>
               <ServiceManager />
-            </SuspensedView>
-          }
-        />
-        <Route
-          path='crafted/pages/profile/*'
-          element={
-            <SuspensedView>
-              <ProfilePage />
-            </SuspensedView>
-          }
-        />
-        <Route
-          path='crafted/pages/wizards/*'
-          element={
-            <SuspensedView>
-              <WizardsPage />
-            </SuspensedView>
-          }
-        />
-        <Route
-          path='crafted/widgets/*'
-          element={
-            <SuspensedView>
-              <WidgetsPage />
-            </SuspensedView>
-          }
-        />
-        <Route
-          path='crafted/account/*'
-          element={
-            <SuspensedView>
-              <AccountPage />
-            </SuspensedView>
-          }
-        />
-        <Route
-          path='apps/chat/*'
-          element={
-            <SuspensedView>
-              <ChatPage />
-            </SuspensedView>
-          }
-        />
-        <Route
-          path='apps/user-management/*'
-          element={
-            <SuspensedView>
-              <UsersPage />
             </SuspensedView>
           }
         />

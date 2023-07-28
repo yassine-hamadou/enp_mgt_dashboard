@@ -169,13 +169,22 @@ const columns: ColumnsType<DataType> = [
 
 const data: any = [
   {
+    tenant: 'Headoffice',
+    finance: '18-05-2023',
+    supplychain: 'No data',
+    esms: '18-05-2023',
+    production: 'No data',
+    hr: '19-05-2023',
+    payroll: 'No data',
+  },
+  {
     tenant: 'Tarkwa',
     finance: '18-05-2023',
     supplychain: 'No data',
     esms: '18-05-2023',
     production: '10-05-2023',
     hr: '19-05-2023',
-    payroll: '18-05-2023',
+    payroll: 'No data',
   },
   {
     tenant: 'Damang',
@@ -183,24 +192,6 @@ const data: any = [
     supplychain: 'No data',
     esms: '18-05-2023',
     production: '10-05-2023',
-    hr: '19-05-2023',
-    payroll: 'No data',
-  },
-  {
-    tenant: 'Salaga',
-    finance: '18-05-2023',
-    supplychain: 'No data',
-    esms: 'No data',
-    production: 'No data',
-    hr: 'No data',
-    payroll: 'No data',
-  },
-  {
-    tenant: 'Headoffice',
-    finance: '18-05-2023',
-    supplychain: 'No data',
-    esms: '18-05-2023',
-    production: 'No data',
     hr: '19-05-2023',
     payroll: 'No data',
   },
