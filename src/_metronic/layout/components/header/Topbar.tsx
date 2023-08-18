@@ -1,10 +1,7 @@
 import clsx from 'clsx'
 import React, {FC} from 'react'
 import {KTSVG, toAbsoluteUrl} from '../../../helpers'
-import {
-  HeaderUserMenu,
-  ThemeModeSwitcher,
-} from '../../../partials'
+import {HeaderUserMenu} from '../../../partials'
 import {useLayout} from '../../core'
 
 const toolbarButtonMarginClass = 'ms-1 ms-lg-3',
@@ -83,24 +80,24 @@ const Topbar: FC = () => {
 
       {/* Quick links */}
       {/*<div className={clsx('d-flex align-items-center', toolbarButtonMarginClass)}>*/}
-        {/* begin::Menu wrapper */}
-        {/*<div*/}
-        {/*  className={clsx(*/}
-        {/*    'btn btn-icon btn-active-light-primary btn-custom',*/}
-        {/*    toolbarButtonHeightClass*/}
-        {/*  )}*/}
-        {/*  data-kt-menu-trigger='click'*/}
-        {/*  data-kt-menu-attach='parent'*/}
-        {/*  data-kt-menu-placement='bottom-end'*/}
-        {/*  data-kt-menu-flip='bottom'*/}
-        {/*>*/}
-        {/*  <KTSVG*/}
-        {/*    path='/media/icons/duotune/general/gen025.svg'*/}
-        {/*    className={toolbarButtonIconSizeClass}*/}
-        {/*  />*/}
-        {/*</div>*/}
-        {/* <QuickLinks /> */}
-        {/* end::Menu wrapper */}
+      {/* begin::Menu wrapper */}
+      {/*<div*/}
+      {/*  className={clsx(*/}
+      {/*    'btn btn-icon btn-active-light-primary btn-custom',*/}
+      {/*    toolbarButtonHeightClass*/}
+      {/*  )}*/}
+      {/*  data-kt-menu-trigger='click'*/}
+      {/*  data-kt-menu-attach='parent'*/}
+      {/*  data-kt-menu-placement='bottom-end'*/}
+      {/*  data-kt-menu-flip='bottom'*/}
+      {/*>*/}
+      {/*  <KTSVG*/}
+      {/*    path='/media/icons/duotune/general/gen025.svg'*/}
+      {/*    className={toolbarButtonIconSizeClass}*/}
+      {/*  />*/}
+      {/*</div>*/}
+      {/* <QuickLinks /> */}
+      {/* end::Menu wrapper */}
       {/*</div>*/}
 
       {/* begin::Theme mode */}

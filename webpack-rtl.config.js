@@ -27,9 +27,9 @@ const entries = {
 function mainConfig() {
   return {
     // enabled/disable optimizations
-    mode: 'development',
+    mode: 'production',
     // console logs output, https://webpack.js.org/configuration/stats/
-    stats: 'errors-only',
+    stats: 'verbose',
     performance: {
       // disable warnings hint
       hints: false,
@@ -72,7 +72,7 @@ function mainConfig() {
             {
               loader: 'sass-unit',
               options: {
-                sourceMap: true,
+                sourceMap: false,
               },
             },
           ],

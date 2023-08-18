@@ -1,99 +1,113 @@
-import {lazy, FC, Suspense} from 'react'
+import React, {lazy, FC, Suspense} from 'react'
+import {ErrorBoundary} from '@ant-design/pro-components'
 import {Route, Routes, Navigate, Outlet} from 'react-router-dom'
 import {MasterLayout} from '../../_metronic/layout/MasterLayout'
 import TopBarProgress from 'react-topbar-progress-indicator'
-import {MenuTestPage} from '../pages/MenuTestPage'
 import {getCSSVariableValue} from '../../_metronic/assets/ts/_utils'
-import {WithChildren} from '../../_metronic/helpers'
-import BuilderPageWrapper from '../pages/layout-builder/BuilderPageWrapper'
-import {ServiceManager} from '../pages/dashboard/DashboardWrapper'
-import {ProductionDashboardWrapper} from '../pages/production/dashboard/ServiceManagerDashboardWrapper'
 import {PageTitle} from '../../_metronic/layout/core'
-import {HRDashboardWrapper} from '../pages/hr-payroll/HumanResourceDashBoard'
 import {Soon} from '../modules/errors/components/Error404'
-import MainDashboard from '../pages/dashboard/mainDashboard/BarChart'
-import {SupplyChain} from '../pages/supplyChain/SupplyChain'
-import Devexpres from '../pages/dashboard/Devexpres'
-
+import {WithChildren} from '../../_metronic/helpers'
+import AllReportPage from '../reports/AllReportPage'
+const FinancePage = lazy(() => import('../pages/finance/FinancePage'))
+const ReportComponent = lazy(() => import('../reports/ReportComponent'))
+const HRDashboardWrapper = lazy(() => import('../pages/hr-payroll/HumanResourceDashBoard'))
+const SupplyChain = lazy(() => import('../pages/supplyChain/SupplyChain'))
+const ServiceManager = lazy(() => import('../pages/dashboard/DashboardWrapper'))
+const ProductionDashboardWrapper = lazy(
+  () => import('../pages/production/dashboard/ServiceManagerDashboardWrapper')
+)
+const Devexpres = lazy(() => import('../pages/dashboard/Devexpres'))
 const PrivateRoutes = () => {
-  const FinancePage = lazy(() => import('../pages/finance/FinancePage'))
-
   return (
     <Routes>
       <Route element={<MasterLayout />}>
-        {/* Redirect to Dashboard after success login/registartion */}
+        {/* Redirect to Dashboard after success login/registration */}
         <Route path='auth/*' element={<Navigate to='/dashboard' />} />
-        {/* Pages */}
         <Route
-          path='dashboard'
+          path='/report'
           element={
             <>
-              <PageTitle>{'Activity'}</PageTitle>
-              <Devexpres dashboardId={'Activity'} />
+              <Suspense fallback={<TopBarProgress />}>
+                <ErrorBoundary>
+                  <Devexpres dashboardId={'report'} />
+                </ErrorBoundary>
+              </Suspense>
             </>
           }
         />
-        <Route path='builder' element={<BuilderPageWrapper />} />
-        <Route path='menu-test' element={<MenuTestPage />} />
-        {/* Lazy Modules */}
+        <Route
+          path='dashboard'
+          element={
+            <ErrorBoundary>
+              <Suspense fallback={<TopBarProgress />}>
+                <PageTitle>{'Activity'}</PageTitle>
+                <Devexpres dashboardId={'Activity'} />
+              </Suspense>
+            </ErrorBoundary>
+          }
+        />
         <Route
           path='finance/*'
           element={
-            <SuspensedView>
-              <PageTitle breadcrumbs={[]}>{'Finance Dashboard'}</PageTitle>
-              <FinancePage />
-            </SuspensedView>
+            <ErrorBoundary>
+              <Suspense fallback={<TopBarProgress />}>
+                <Devexpres dashboardId={'Finance'} />
+              </Suspense>
+            </ErrorBoundary>
           }
         />
         <Route
           path='hr/*'
           element={
-            <SuspensedView>
-              <HRDashboardWrapper />
-            </SuspensedView>
+            <ErrorBoundary>
+              <Suspense fallback={<TopBarProgress />}>
+                <Devexpres dashboardId={'HRDashBoard'} />
+              </Suspense>
+            </ErrorBoundary>
           }
         />
         <Route
           path='payroll/*'
           element={
-            <SuspensedView>
-              <Soon />
-            </SuspensedView>
+            <ErrorBoundary>
+              <Suspense fallback={<TopBarProgress />}>
+                <Soon />
+              </Suspense>
+            </ErrorBoundary>
           }
         />
         <Route
           path='supply-chain/*'
           element={
-            <SuspensedView>
-              <SupplyChain />
-            </SuspensedView>
+            <ErrorBoundary>
+              <Suspense fallback={<TopBarProgress />}>
+                {/*<SupplyChain />*/}
+                <PageTitle breadcrumbs={[]}>{'SupplyChain Dashboard'}</PageTitle>
+                <Devexpres dashboardId={'SupplyChain'} />
+              </Suspense>
+            </ErrorBoundary>
           }
         />
         <Route
           path='production/*'
           element={
-            <SuspensedView>
-              <Outlet />
-            </SuspensedView>
+            <ErrorBoundary>
+              <Suspense fallback={<TopBarProgress />}>
+                <PageTitle>{'Production'}</PageTitle>
+                {/*<ProductionDashboardWrapper />*/}
+                <Devexpres dashboardId={'pro_cycleDetails'} />
+              </Suspense>
+            </ErrorBoundary>
           }
-        >
-          <Route
-            path=''
-            element={
-              <>
-                <PageTitle breadcrumbs={[]}>{'Production'}</PageTitle>
-                <ProductionDashboardWrapper />
-              </>
-            }
-          />
-        </Route>
+        />
         <Route
           path='svc-manager/*'
           element={
-            <SuspensedView>
-              <PageTitle breadcrumbs={[]}>{'Service Manager Dashboard'}</PageTitle>
-              <ServiceManager />
-            </SuspensedView>
+            <Suspense fallback={<TopBarProgress />}>
+              <PageTitle>{'Service Manager Dashboard'}</PageTitle>
+              {/*<ServiceManager />*/}
+              <Devexpres dashboardId={'dashboard3'} />
+            </Suspense>
           }
         />
         {/* Page Not Found */}
@@ -101,18 +115,6 @@ const PrivateRoutes = () => {
       </Route>
     </Routes>
   )
-}
-
-const SuspensedView: FC<WithChildren> = ({children}) => {
-  const baseColor = getCSSVariableValue('--kt-primary')
-  TopBarProgress.config({
-    barColors: {
-      '0': baseColor,
-    },
-    barThickness: 1,
-    shadowBlur: 5,
-  })
-  return <Suspense fallback={<TopBarProgress />}>{children}</Suspense>
 }
 
 export {PrivateRoutes}

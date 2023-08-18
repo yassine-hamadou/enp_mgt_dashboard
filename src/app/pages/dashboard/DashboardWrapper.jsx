@@ -4,27 +4,7 @@ import {useIntl} from 'react-intl'
 import {PageTitle} from '../../../_metronic/layout/core'
 import Devexpres from './Devexpres'
 
-const DashboardPage = () => (
-  <>
-    {/* begin::Row */}
-    <Devexpres dashboardId={'dashboard3'} />
-    <br />
-    <br />
-    <div className='row gy-5 g-xl-8'>
-      <div className='col-xl-12'>
-        <div className='row gy-5 g-xl-8'>
-          <div className='col-xl-6'>
-            <Devexpres dashboardId={'dashboard4'} />
-          </div>
-          <div className='col-xl-6'>
-            <Devexpres dashboardId={'faultCount'} />
-          </div>
-        </div>
-        <Devexpres dashboardId={'faultSearchable'} />
-      </div>
-    </div>
-  </>
-)
+const DashboardPage = () => <Devexpres dashboardId={'dashboard3'} />
 
 const ServiceManager = () => {
   return (
@@ -35,4 +15,4 @@ const ServiceManager = () => {
   )
 }
 
-export {ServiceManager}
+export default ServiceManager

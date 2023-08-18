@@ -10,4 +10,4 @@ const SupplyChain = () => {
   )
 }
 
-export {SupplyChain}
+export default SupplyChain

@@ -11,7 +11,7 @@ export const DefaultLayoutConfig: ILayout = {
     type: 'default', // Set default|spinner-message|spinner-logo to hide or show page loader
   },
   scrolltop: {
-    display: true,
+    display: false,
   },
   header: {
     display: true, // Set true|false to show or hide Header
@@ -24,13 +24,13 @@ export const DefaultLayoutConfig: ILayout = {
     menuIcon: 'svg',
   },
   megaMenu: {
-    display: true, // Set true|false to show or hide Mega Menu
+    display: false, // Set true|false to show or hide Mega Menu
   },
   aside: {
     display: false,
     theme: 'dark',
     menu: 'main',
-    fixed: true,
+    fixed: false,
     minimized: true,
     minimize: true,
     hoverable: true,

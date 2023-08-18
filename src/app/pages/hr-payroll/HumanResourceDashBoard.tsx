@@ -14,4 +14,4 @@ const HRDashboardWrapper = () => {
   )
 }
 
-export {HRDashboardWrapper}
+export default HRDashboardWrapper
