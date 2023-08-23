@@ -9,9 +9,10 @@ import axios from 'axios'
 // export const ENP_HR = 'https://app.sipconsult.net/hrWebApi/api'
 // export const ENP_USERS = 'https://app.sipconsult.net/hrwebapi/api/Users'
 
-export const ENP_URL = 'https://208.117.44.15/SmWebApi/api'
-export const ENP_HR = 'https://208.117.44.15/hrWebApi/api'
-export const ENP_USERS = 'https://208.117.44.15/hrwebapi/api/Users'
+export const BASE_URL = 'https://enp.sipconsult.net'
+export const ENP_URL = `${BASE_URL}/SmWebApi/api`
+export const ENP_HR = `${BASE_URL}/hrWebApi/api`
+export const ENP_USERS = `${BASE_URL}/hrwebapi/api/Users`
 
 // export const ENP_URL = 'http://localhost:4192'
 

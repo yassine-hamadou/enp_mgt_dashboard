@@ -1,4 +1,5 @@
 import {DashboardControl} from 'devexpress-dashboard-react'
+import {BASE_URL} from '../../../url'
 
 const Devexpres = (props) => {
   return (
@@ -6,7 +7,7 @@ const Devexpres = (props) => {
       <DashboardControl
         id='web-dashboard'
         style={{height: '100%'}}
-        endpoint='https://208.117.44.15/dashboards/dashboardcontrol'
+        endpoint={`${BASE_URL}/dashboards/dashboardcontrol`}
         //optional configuration with default values
         workingMode={props.workingMode ? props.workingMode : 'ViewerOnly'}
         dashboardId={props.dashboardId}

@@ -6,15 +6,14 @@ import '../../../node_modules/devexpress-reporting/dist/css/dx-webdocumentviewer
 import '../../../node_modules/@devexpress/analytics-core/dist/css/dx-analytics.common.css'
 import '../../../node_modules/@devexpress/analytics-core/dist/css/dx-analytics.light.css'
 import {DxReportViewer} from 'devexpress-reporting/dx-webdocumentviewer'
-import {useAuth} from '../modules/auth'
+import {BASE_URL} from '../../url'
 
 const ReportViewer = (props) => {
   // const {tenant} = useAuth()
   const reportUrl = ko.observable(`${props.reportName}`)
   const viewerRef = useRef()
   const requestOptions = {
-    host: 'https://208.117.44.15/serverside/',
-    // host: "https://app.sipconsult.net/serverside/",
+    host: `${BASE_URL}/serverside/`,
     invokeAction: 'DXXRDV',
   }
 
